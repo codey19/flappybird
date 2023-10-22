@@ -1,0 +1,70 @@
+$ npm run dev
+
+> phaser-webpack-boilerplate@1.0.0 dev
+> webpack serve --config webpack.common.js
+
+[webpack-cli] Invalid options object. Dev Server has been initialized using an options object that does not match the API schema.
+ - options has an unknown property 'contentBase'. These properties are valid:
+   object { allowedHosts?, bonjour?, client?, compress?, devMiddleware?, headers?, historyApiFallback?, host?, hot?, http2?, https?, ipc?, liveReload?, magicHtml?, onAfterSetupMiddleware?, onBeforeSetupMiddleware?, onListening?, open?, port?, proxy?, server?, setupExitSignals?, setupMiddlewares?, static?, watchFiles?, webSocketServer? }
+
+
+$ npm install webpack@5 webpack-cli@4 webpack-dev-server@3
+
+
+$ npm run dev
+
+> phaser-webpack-boilerplate@1.0.0 dev
+> webpack serve --config webpack.common.js
+
+
+i ∩╜ówds∩╜ú: Project is running at http://localhost:8080/
+i ∩╜ówds∩╜ú: webpack output is served from /
+i ∩╜ówds∩╜ú: Content not from webpack is served from C:\_app\phaser-games\flappy-bird-clone\build
+├ù ∩╜ówdm∩╜ú: asset vendor.js 18.9 MiB [emitted] (name: vendor) (id hint: commons)
+asset app.js 12.1 KiB [emitted] (name: app)
+asset index.html 241 bytes [emitted]
+Entrypoint app 18.9 MiB = vendor.js 18.9 MiB app.js 12.1 KiB
+runtime modules 3.67 KiB 8 modules
+modules by path ./node_modules/ 6.87 MiB
+  modules by path ./node_modules/webpack-dev-server/client/ 20.9 KiB 10 modules
+  modules by path ./node_modules/html-entities/lib/*.js 61 KiB 5 modules
+  modules by path ./node_modules/qs/lib/*.js 26.6 KiB 5 modules
+  modules by path ./node_modules/webpack/hot/ 2.1 KiB 3 modules
+  modules by path ./node_modules/url/ 37.2 KiB 2 modules
+  modules by path ./node_modules/call-bind/*.js 1.68 KiB 2 modules
+  modules by path ./node_modules/has-symbols/*.js 2.13 KiB 2 modules
+  modules by path ./node_modules/function-bind/*.js 1.55 KiB 2 modules
+  + 11 modules
+./src/index.js 404 bytes [built] [code generated]
+./util.inspect (ignored) 15 bytes [built] [code generated]
+
+ERROR in unable to locate 'C:\_app\phaser-games\flappy-bird-clone\assets\**\*' glob
+
+webpack 5.88.2 compiled with 1 error in 2278 ms
+i ∩╜ówdm∩╜ú: Failed to compile.
+
+
+
+And change CopyPlugin like this:
+
+new CopyPlugin({
+  patterns: [
+    {
+      from: path.resolve(__dirname, 'assets'),
+      to: path.resolve(__dirname, 'build/assets')
+    }
+  ],
+})
+
+--------------------------------------------------------------------------------------
+------------------------------- build from scratch ------------------------------------
+--------------------------------------------------------------------------------------
+
+https://snowbillr.github.io/blog//2018-04-09-a-modern-web-development-setup-for-phaser-3/
+
+https://tnodes.medium.com/integrating-react-and-phaser-3-tutorial-eb96717d4a9d
+
+https://stackoverflow.com/questions/55667188/how-to-integrate-phaser-into-react
+
+https://www.html5gamedevs.com/topic/10742-use-the-phaser-in-a-specific-canvas-element/
+
